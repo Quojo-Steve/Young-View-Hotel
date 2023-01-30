@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young View Hotel</title>
+    <link rel="stylesheet" href={% static "style.css" %}>
+    <link rel="shortcut icon" href={% static "images/icons/hotel_star_40px.png" %} type="image/x-icon">
+    
+</head>
+<body class="body2">
+    <div class="container dash">
+        <h1 class="h1">Rooms</h1>
+        <div class="logout1">
+            <div class="iden">
+                <img src={% static  "./images/icons/people_60px.png" %} alt="">
+                {% if user.is_authenticated %}
+                <p>{{user.username}}</p>
+                {% endif %}
+            </div>
+            <a href="./emp_dashboard"><img src={% static "./images/icons/back_arrow_64px.png" %} alt=""></a>
+        </div>
+
+        <a href="./emp_book_room" target="_blank" class="book">Book Room</a>
+
+        <div class="filter">
+            <select name="filter" id="select" onchange="getSelectedValue();">
+                <option value="all">All</option>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="ordinary">Ordinary</option>
+                <option value="standard">Standard</option>
+                <option value="executive">Executive</option>
+            </select>
+        </div>
+
+        <div class="boxes">
+            {% for room in all_rooms %}
+            {% if room.availability is False and room.grade == 'Ordinary' %}
+            <div class="each emp r o">
+                <a href="./emp_room/{{room.name}}">{{room.name}}</a>
+                <span class="color red"></span>
+                <p class="type">{{room.grade}}</p>
+            </div>
+            {% elif room.availability is False and room.grade == 'Standard' %}
+            <div class="each emp r s">
+                <a href="./emp_room/{{room.name}}">{{room.name}}</a>
+                <span class="color red"></span>
+                <p class="type">{{room.grade}}</p>
+            </div>
+            {% elif room.availability is False and room.grade == 'Executive' %}
+            <div class="each emp r e">
+                <a href="./emp_room/{{room.name}}">{{room.name}}</a>
+                <span class="color red"></span>
+                <p class="type">{{room.grade}}</p>
+            </div>
+            {% elif room.availability is True and room.grade == 'Executive' %}
+            <div class="each emp g e">
+                <a href="./emp_room/{{room.name}}">{{room.name}}</a>
+                <span class="color green"></span>
+                <p class="type">{{room.grade}}</p>
+            </div>
+            {% elif room.availability is True and room.grade == 'Standard' %}
+            <div class="each emp g s">
+                <a href="./emp_room/{{room.name}}">{{room.name}}</a>
+                <span class="color green"></span>
+                <p class="type">{{room.grade}}</p>
+            </div>
+            {% elif room.availability is True and room.grade == 'Ordinary' %}
+            <div class="each emp g o">
+                <a href="./emp_room/{{room.name}}">{{room.name}}</a>
+                <span class="color green"></span>
+                <p class="type">{{room.grade}}</p>
+            </div>
+            {% endif %}
+            {% endfor %}
+            
+            
+        </div>
+    </div>
+    
+    <script src={% static "app.js" %}></script>
+    <!-- Activate on Dday -->
+    <!-- <script defer>
+        setInterval(function(){
+            location.reload()
+        }, 10000)
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href={% static "./qr_css.css" %}>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js" integrity="sha512-5XAS7mhslf6oGjLxzmY4iYfFwDGf8G1ZBeWdymR/+y8ZCvPWwI3Ff+WrS+kabqYdIEwYaLEnJhsuymZxgrneQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>Booking Details</h1>
+        </header>
+        <div class="form">
+            <input type="text" value="{{name.booking_id}}" hidden>
+            <div class="details">
+                <p>Name: </p> 
+                <p>{{name.guest_name}}</p>
+            </div>
+            <div class="details">
+                <p>Arrival Date: </p> 
+                <p>{{name.arrival}}</p>
+            </div>
+            <div class="details">
+                <p>Departure Date: </p> 
+                <p>{{name.departure}}</p>
+            </div>
+            <div class="details">
+                <p>Guests: </p> 
+                <p>{{name.no_of_guests}}</p>
+            </div>
+            <div class="details">
+                <p>Price: </p> 
+                <p>{{name.price}}</p>
+            </div>
+            <div class="details">
+                <p>Tel No: </p> 
+                <p>{{name.phone_number}}</p>
+            </div>
+            
+            <button>Generate Receipt</button>
+        </div>
+        <div class="qr-code" >
+            <img src="" alt="" id="capture">
+        </div>
+        <button onclick="screenshot()" class="save">Save Screenshot</button>
+
+    </div>
+
+
+    <script src={% static "./qr_script.js" %}></script>
+    <script>
+        const shot = document.querySelector('.shot');
+        function screenshot(){
+        html2canvas(document.querySelector("#capture")).then(canvas => {
+           // document.body.appendChild(canvas)
+           console.log(canvas);
+            const a =document.createElement('a');
+            document.body.append(a);
+            a.href=canvas.toDataURL("image/jpeg");
+            a.download='qr.jpeg';
+            a.click();
+            // document.body.removeChild('a');
+        });
+    }
+    </script>
+</body>
+</html>

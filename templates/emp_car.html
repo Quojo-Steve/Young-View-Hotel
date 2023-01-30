@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young View Hotel</title>
+    <link rel="stylesheet" href={% static "style.css" %}>
+    <link rel="shortcut icon" href={% static "images/icons/hotel_star_40px.png" %} type="image/x-icon">
+</head>
+<body class="body2">
+    <div class="container dash1">
+        <h2>Car 1</h2>
+        <div class="logout1">
+            <div class="iden">
+                <img src={% static  "./images/icons/people_60px.png" %} alt="">
+                {% if user.is_authenticated %}
+                <p>{{user.username}}</p>
+                {% endif %}
+            </div>
+            <a href="./emp_dashboard"><img src={% static "./images/icons/back_arrow_64px.png" %} alt=""></a>
+        </div>
+
+        <div class="main_body">
+            <aside class="aside1">
+                <fieldset>
+                    <legend>Car 1</legend>
+                    <div class="details">
+                        <div class="line">
+                            <label for="">Car Name ~</label>
+                            <span>Car 1</span>
+                        </div>
+                        <div class="line">
+                            <label for="">Car Size ~</label>
+                            <span>Big</span>
+                        </div>
+                        <div class="line">
+                            <label for="">Car Type ~</label>
+                            <span>Ordinary</span>
+                        </div>
+                        <div class="line">
+                            <label for="">Car Availabilty ~</label>
+                            <span class="available">Available</span>
+                        </div>
+                        <!-- for unavailable -->
+                        <!-- <div class="line">
+                            <label for="">Room Availabilty ~</label>
+                            <span class="unavailable">Available</span>
+                        </div> -->
+
+                        <!-- for partial available -->
+                        <!-- <div class="line">
+                            <label for="">Room Availabilty ~</label>
+                            <span class="paravailable">Available</span>
+                        </div> -->
+                        <div class="line">
+                            <label for="">Car Price (per hour) ~</label>
+                            <span>Ghc 100</span>
+                        </div>
+                        
+                    </div>
+            </aside>
+            
+            <aside class="aside2">
+                <fieldset>
+                    <legend>Book Car</legend>
+                    
+                    <form action="" class="details">
+                        <div class="one">
+                            <label for="">Name</label>
+                            <input type="text">
+                        </div>
+                        <div class="one">
+                            <label for="">Rent time</label>
+                            <input type="datetime-local">
+                        </div>
+                        <div class="one">
+                            <label for="">Return time </label>
+                            <input type="datetime-local">
+                        </div>
+                        <div class="one">
+                            <label for="">Price </label>
+                            <input type="text">
+                        </div>
+                        <input type="submit" value="Submit" class="room_sub">
+                    </form>
+                </fieldset>
+            </aside>
+        </div>
+        
+    </div>
+    
+
+</body>
+</html>

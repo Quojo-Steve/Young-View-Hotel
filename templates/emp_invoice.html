@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young View Hotel</title>
+    <link rel="stylesheet" href={% static "style.css" %}>
+    <link rel="shortcut icon" href={% static "images/icons/hotel_star_40px.png" %} type="image/x-icon">
+</head>
+<body class="body3">
+    <div class="container dash1">
+        <h2>Invoice Management</h2>
+        <div class="logout">
+            <div class="iden">
+                <img src={% static  "./images/icons/people_60px.png" %} alt="">
+                {% if user.is_authenticated %}
+                <p>{{user.username}}</p>
+                {% endif %}
+            </div>
+            <a href="./logout">Logout</a>
+        </div>
+        <a href="./emp_invoice" style="background: crimson; cursor: pointer; padding: 10px 50px; font-weight: 600; color: white; border: none; border-radius: 20px; text-decoration: none;">All</a>
+
+        <div class="main_body">
+            <aside class="aside1">
+                <fieldset>
+                    <legend>Menu</legend>
+                    <p>Invoice ID</p>
+                    {% for message in messages %}
+                        <div class="error-txt">{{ message }}</div>
+                    {% endfor %}
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="text" class="text" name="search">
+                        <input type="submit" value="Search" class="sub">
+                    </form>
+                    <div class="buttons invoice">
+                        <a href="./emp_dashboard">Exit</a>
+                    </div>
+                </fieldset>
+            </aside>
+            
+            <aside class="aside2">
+                <fieldset>
+                    <legend>Employees</legend>
+                    <div class="headers">
+                        <p>Invoice ID</p>
+                        <p>Customer Name</p>
+                        
+                        
+                    </div>
+                    <div class="employees">
+                        {% for booking in all_booking %}
+                        <div class="employee">
+                            <p>{{booking.booking_id}}</p>
+                            <p>{{booking.guest_name}}</p>
+                            <div class="imag">
+                                <a href="./invoice_details/{{booking.booking_id}}">
+                                    Details
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% for booking in search_booking %}
+                        <div class="employee">
+                            <p>{{booking.booking_id}}</p>
+                            <p>{{booking.guest_name}}</p>
+                            <div class="imag">
+                                <a href="./invoice_details/{{booking.booking_id}}">
+                                    Details
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
+                    </div>
+                </fieldset>
+            </aside>
+        </div>
+        <!-- <div class="form remove">
+           <div class="box">
+            <p>Are you sure you want to <span>deactivate</span></p> <span class="span">Owusu Prince Dankwah ?</span>
+            <div class="options">
+                <a href="">Yes</a>
+                <button class="no">No</button>
+            </div>
+           </div>
+        </div>
+        <div class="form1 remove">
+           <div class="box">
+            <p>Are you sure you want to <span>activate</span></p> <span class="span">Owusu Prince Dankwah ?</span>
+            <div class="options">
+                <a href="">Yes</a>
+                <button class="no1">No</button>
+            </div>
+           </div>
+        </div> -->
+    </div>
+    
+
+
+</body>
+</html>

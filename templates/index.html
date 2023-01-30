@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young View Hotel</title>
+    <link rel="stylesheet" href={% static "style.css" %}>
+    <link rel="shortcut icon" href={% static "images/icons/hotel_star_40px.png" %} type="image/x-icon">
+</head>
+<body class="body1">
+    <div class="container">
+        <h1>Login As?</h1>
+
+        <div class="boxes">
+            <div class="each">
+                <img src={% static "./images/icons/collaborator_female_60px.png" %} alt="">
+                <a href="emp_login">Employee</a>
+            </div>
+            <div class="each">
+                <img src={% static "./images/icons/Database Administrator_128px.png" %} alt="">
+                <a href="./admin_login.html">Admin</a>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>

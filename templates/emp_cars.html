@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young View Hotel</title>
+    <link rel="stylesheet" href={% static "style.css" %}>
+    <link rel="shortcut icon" href={% static "images/icons/hotel_star_40px.png" %} type="image/x-icon">
+</head>
+<body class="body1">
+    <div class="container dash">
+        <h1>Cars</h1>
+        <div class="logout1">
+            <div class="iden">
+                <img src={% static  "./images/icons/people_60px.png" %} alt="">
+                {% if user.is_authenticated %}
+                <p>{{user.username}}</p>
+                {% endif %}
+            </div>
+            <a href="./emp_dashboard"><img src={% static "./images/icons/back_arrow_64px.png" %} alt=""></a>
+        </div>
+
+        <div class="boxes">
+            {% for car in cars %}
+            <div class="each emp">
+                <a href="./emp_car/{{car.name}}">{{car.name}}</a>
+                <span class="color red"></span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+
+</body>
+</html>

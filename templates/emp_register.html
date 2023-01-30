@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young View Hotel</title>
+    <link rel="stylesheet" href={% static "style.css" %}>
+    <link rel="shortcut icon" href={% static "images/icons/hotel_star_40px.png" %} type="image/x-icon">
+</head>
+<body class="body3">
+    <div class="container1">
+        <section class="form2">
+            <div class="head">
+                <a href=""><img src={% static "images/icons/back_arrow_64px.png" %} alt=""></a>
+                <header>Register</header>
+            </div>
+            
+            <form method="post">
+                {% csrf_token %}
+                {% for message in messages %}
+                    <div class="error-txt">{{ message }}</div>
+                {% endfor %}
+                <div class="name-details">
+                    <div class="field input">
+                        <label>First Name</label>
+                        <input type="text" placeholder="First Name" name="fname" required>
+                    </div>
+                    <div class="field input">
+                        <label>Last Name</label>
+                        <input type="text" placeholder="Last Name" name="lname" required>
+                    </div>
+                </div>
+                <div class="field input">
+                    <label>Username</label>
+                    <input type="text" placeholder="Enter your Username" name="username" required>
+                </div>
+                <div class="field input">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Enter your email address" name="email" required>
+                </div>
+                <div class="field input">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter new Password" name="password" required>
+                    <i class="fas fa-eye"></i>
+                </div>
+                <div class="field input">
+                    <label>Confirm Password</label>
+                    <input type="password" placeholder="Repeat new Password" name="password1" required>
+                    <i class="fas fa-eye"></i>
+                </div>
+                <div class="field button">
+                    <input type="submit" value="Continue to Chat">
+                </div>
+                
+            </form>
+        </section>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young View Hotel</title>
+    <link rel="stylesheet" href={% static "style.css" %}>
+    <link rel="shortcut icon" href={% static "images/icons/hotel_star_40px.png" %} type="image/x-icon">
+</head>
+<body class="body3">
+    <div class="container dash">
+        <h1>Dashboard</h1>
+        <div class="logout">
+            <div class="iden">
+                <img src={% static  "./images/icons/people_60px.png" %} alt="">
+                {% if user.is_authenticated %}
+                <p>{{user.username}}</p>
+                {% endif %}
+            </div>
+            <a href="./logout">Logout</a>
+        </div>
+
+        <div class="boxes">
+            <div class="each">
+                <img src={% static "./images/icons/QR Code_128px.png" %} alt="">
+                <a href="https://products.aspose.app/barcode/scanqr" target="_blank">Scan QR code</a>
+            </div>
+            <div class="each">
+                <img src={% static "./images/icons/double_bed_60px.png" %} alt="">
+                <a href="./emp_rooms">Rooms</a>
+            </div>
+            <!-- <div class="each">
+                <img src={% static "./images/icons/hennessey_venom_60px.png" %} alt="">
+                <a href="./emp_cars">Cars</a>
+            </div> -->
+            <div class="each">
+                <img src={% static "./images/icons/file_invoice_dollar_48px.png" %} alt="">
+                <a href="./emp_invoice">Invoices</a>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>

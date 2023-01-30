@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/customer-banner.jpg") center/cover no-repeat fixed;
+}
+.wrapper{
+    height: fit-content;
+    background: white;
+    max-width: 510px;
+    border-radius: 7px;
+    padding: 16px 25px;
+    transition: height 0.2s ease;
+}
+@media(max-width: 500px){
+    .wrapper{
+        padding: 10px 15px;
+    }
+}
+.wrapper.active{
+    height: fit-content;
+}
+header h1{
+    font-size: 21px;
+    font-weight: 500;
+}
+header p{
+    margin-top: 5px;
+    color: #474747;
+    font-size: 16px;
+}
+.wrapper .form{
+    margin: 20px 0 25px;
+}
+.form :where(input, button){
+    width: 100%;
+    height: 55px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+.form input{
+    font-size: 18px;
+    padding: 0 17px;
+    border: 1px solid #999;
+}
+button{
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 17px;
+    background: fuchsia;
+}
+.wrapper .qr-code{
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    padding: 33px 0;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+}
+.wrapper.active .qr-code{
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.5s 0.05s ease;
+}
+.details{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 50px;
+    border-bottom: 1px solid rgb(139, 131, 131);
+}
+.save{
+    width: 100%;
+    height: 55px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    display: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 17px;
+    background: fuchsia;
+}

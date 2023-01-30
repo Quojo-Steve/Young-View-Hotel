@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young View Hotel</title>
+    <link rel="stylesheet" href={% static "style.css" %}>
+    <link rel="shortcut icon" href={% static "images/icons/hotel_star_40px.png" %} type="image/x-icon">
+</head>
+<body class="body3">
+    <div class="container1">
+        <section class="form2">
+            <div class="head">
+                <header>BookRoom</header>
+            </div>
+            
+            <form method="post">
+                {% csrf_token %}
+                {% for message in messages %}
+                <div class="error-txt">{{ message }}</div>
+                {% endfor %}
+                <div class="name-details">
+                    <div class="field input">
+                        <label for="">Room Name</label>
+                        <input type="text" name="rname" id="room-name">
+                    </div>
+                    <div class="field input">
+                        <label for="">Name</label>
+                        <input type="text" name="gname">
+                    </div>
+                    
+                </div>
+                <div class="name-details">
+                    <div class="field input">
+                        <label for="">Arrival </label>
+                        <input type="date" name="adate" id="arrival">
+                    </div>
+                    <div class="field input">
+                        <label for="">Departure </label>
+                        <input type="date" name="ddate" id="departure">
+                    </div>
+                </div>
+                
+                <div class="field input">
+                    <label for="">Phone number </label>
+                    <input type="tel" name="pnum">
+                </div>
+                <div class="name-details">
+                    <div class="field input">
+                        <label for="">Id type</label>
+                        <select name="cards" id="" class="sel">
+                            <option value="Ghana Card" >Ghana Card</option>
+                            <option value="Driver's License">Driver's License</option>
+                            <option value="Voter's Id">Voter's Id</option>
+                        </select>
+                    </div>
+                    <div class="field input">
+                        <label for="">Id number </label>
+                        <input type="text" name="idnum">
+                    </div>
+                </div>
+                <div class="name-details">
+                    <div class="field input">
+                        <label for="">Guests</label>
+                            <input type="number" name="guest_no">
+                    </div>
+                    <div class="field input">
+                        <label for="">Price </label>
+                        <input type="text" name="price" id="price">
+                    </div>
+                </div>
+                
+                <div class="field button">
+                    <input type="submit" value="Book Room">
+                </div>
+                
+            </form>
+        </section>
+    </div>
+
+    <script defer>
+
+        setInterval(function(){
+            var room = document.getElementById('room-name').value;
+            var arrival = document.getElementById('arrival').value;
+            var departure = document.getElementById('departure').value;
+
+            if (room.toLowerCase() === 'k1' || room.toLowerCase() === 'k2' || room.toLowerCase() === 'k3' || room.toLowerCase() === 'k4' || room.toLowerCase() === 'k5'){
+                room_price = 120
+            }else if(room.toLowerCase() === 'l1' || room.toLowerCase() === 'l2' || room.toLowerCase() === 'l3' || room.toLowerCase() === 'l4' || room.toLowerCase() === 'l5' || room.toLowerCase() === 'l6'){
+                room_price = 150
+            }else if(room.toLowerCase() === 'l7' || room.toLowerCase() === 'l8' || room.toLowerCase() === 'l9' || room.toLowerCase() === 'l4' || room.toLowerCase() === 'l10'){
+                room_price = 200
+            }
+            var date1 = new Date(arrival)
+            var date2 = new Date(departure)
+
+            var diff = date2.getTime() - date1.getTime();
+
+            var stay_days = diff/(1000*3600*24);
+            
+            actual_price = stay_days * room_price;
+            
+            if (actual_price > 0){
+                document.getElementById('price').value = actual_price;
+            }
+
+        }, 2000)         
+
+    </script>
+</body>
+</html>

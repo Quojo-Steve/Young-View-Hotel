@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young View Hotel</title>
+    <link rel="stylesheet" href={% static "style.css" %}>
+    <link rel="shortcut icon" href={% static "images/icons/hotel_star_40px.png" %} type="image/x-icon">
+</head>
+<body class="body2">
+    <div class="container dash1">
+        <h2>Booking Details</h2>
+        <div class="logout1">
+            <div class="iden">
+                <img src={% static  "./images/icons/people_60px.png" %} alt="">
+                {% if user.is_authenticated %}
+                <p>{{user.username}}</p>
+                {% endif %}
+            </div>
+            <a href="../emp_invoice"><img src={% static "./images/icons/back_arrow_64px.png" %} alt=""></a>
+        </div>
+
+        <div class="main_body detailss">
+            <aside class="aside1">
+                <fieldset>
+                    <legend>Booking Details</legend>
+                    <div class="details">
+                        <div class="line">
+                            <label for="">Customer Name ~</label>
+                            <span>{{booking.guest_name}}</span>
+                        </div>
+                        <div class="line">
+                            <label for="">Room Name ~</label>
+                            <span>{{booking.room_name}}</span>
+                        </div>
+                        <div class="line">
+                            <label for="">Room Type ~</label>
+                            <span>{{booking.room_name.grade}}</span>
+                        </div>
+                        <div class="line">
+                            <label for="">Customer Number ~</label>
+                            <span>{{booking.phone_number}}</span>
+                        </div>
+                        <div class="line">
+                            <label for="">ID Number ~</label>
+                            <span class="available">{{booking.id_type}}</span>
+                        </div>
+                        <div class="line">
+                            <label for="">Amount Paid ~</label>
+                            <span>Ghc {{booking.price}}</span>
+                        </div>
+                        <div class="line">
+                            <label for="">Arrival date ~</label>
+                            <span>{{booking.arrival}}</span>
+                        </div>
+                        <div class="line">
+                            <label for="">Departure date ~</label>
+                            <span>{{booking.departure}}</span>
+                        </div>
+                    </div>
+            </aside>
+            
+            
+        </div>
+        
+    </div>
+    
+
+</body>
+</html>

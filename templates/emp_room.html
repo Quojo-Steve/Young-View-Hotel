@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young View Hotel</title>
+    <link rel="stylesheet" href={% static "style.css" %}>
+    <link rel="shortcut icon" href={% static "images/icons/hotel_star_40px.png" %} type="image/x-icon">
+    
+</head>
+<body class="body1">
+    <div class="container dash1">
+        <h2>{{room.name}}</h2>
+        <div class="logout1">
+            <div class="iden">
+                <img src={% static  "./images/icons/people_60px.png" %} alt="">
+                {% if user.is_authenticated %}
+                <p>{{user.username}}</p>
+                {% endif %}
+            </div>
+            <a href="../emp_rooms"><img src={% static "./images/icons/back_arrow_64px.png" %} alt=""></a>
+        </div>
+        {% for message in messages %}
+            <div class="error-txt">{{ message }}</div>
+        {% endfor %}
+        <div class="main_body">
+            <aside class="aside1">
+                <fieldset>
+                    <legend>Room detail</legend>
+                    <div class="details">
+                        <div class="line">
+                            <label for="">Room Name ~</label>
+                            <span>{{room.name}}</span>
+                        </div>
+                        <div class="line">
+                            <label for="">Room Capacity ~</label>
+                            <span>{{room.capacity}}</span>
+                        </div>
+                        <div class="line">
+                            <label for="">Room Type ~</label>
+                            <span>{{room.grade}}</span>
+                        </div>
+                        {% if room.availability is True %}
+                        <div class="line">
+                            <label for="">Room Availabilty ~</label>
+                            <span class="available">Available</span>
+                        </div>
+                        {% else %}
+                        <div class="line">
+                            <label for="">Room Availabilty ~</label>
+                            <span class="unavailable">Unavailable</span>
+                        </div>
+                        {% endif %}
+
+                        <!-- for partial available -->
+                        <!-- <div class="line">
+                            <label for="">Room Availabilty ~</label>
+                            <span class="paravailable">Available</span>
+                        </div> -->
+                        <div class="line">
+                            <label for="">Room Price (per night) ~</label>
+                            <span>Ghc {{room.price}}</span>
+                        </div>
+                        <!-- <div class="line">
+                            <label for="">Last booked date ~</label>
+                            <span>6th May 2020</span>
+                        </div> -->
+                        <div class="line">
+                            <label for="">Next booked date ~</label>
+                            <span>{{room.next_booked_date}}</span>
+                        </div>
+                    </div>
+            </aside>
+            
+            <aside class="aside2">
+                <fieldset>
+                    <legend>Book Room</legend>
+                    {% if room.availability is False %}
+                    <form method="post" class="details">
+                        {% csrf_token %}
+                        <div class="one">
+                            <label for="">Booking ID</label>
+                            <span>{{booker.booking_id}}</span>
+                        </div>
+                        <div class="one">
+                            <label for="">Name</label>
+                            <span>{{booker.guest_name}}</span>
+                        </div>
+                        <div class="one">
+                            <label for="">Guests</label>
+                            <span>{{booker.no_of_guests}}</span>
+                        </div>
+                        <div class="one">
+                            <label for="">Arrival </label>
+                            <span>{{booker.arrival}}</span>
+                        </div>
+                        <div class="one">
+                            <label for="">Departure </label>
+                            <span>{{booker.departure}}</span>
+                        </div>
+                        <div class="one">
+                            <label for="">Phone number </label>
+                            <span>{{booker.phone_number}}</span>
+                        </div>
+                        <div class="one">
+                            <label for="">Id number </label>
+                            <span>{{booker.id_number}}</span>
+                        </div>
+                        <div class="one">
+                            <label for="">Amount Paid</label>
+                            <span>{{booker.amount_paid}}</span>
+                        </div>
+                        <div class="one">
+                            <label for="">Price </label>
+                            <span>{{booker.price}}</span>
+                        </div>
+                        <input type="submit" value="Checked Out" class="room_sub">
+                    </form>
+                    {% else %}
+                    <br><br>
+                    <br><br>
+                    <a href="../emp_book_room" target="_blank" class="book">Book a Room</a>
+                    {% endif %}
+                </fieldset>
+            </aside>
+        </div>
+        
+    </div>
+    
+
+</body>
+</html>

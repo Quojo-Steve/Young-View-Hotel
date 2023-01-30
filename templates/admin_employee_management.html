@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young View Hotel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./images/icons/hotel_star_40px.png" type="image/x-icon">
+    <script src="./app.js" defer></script>
+</head>
+<body class="body1">
+    <div class="container dash1">
+        <h2>Employee Management</h2>
+        <div class="logout">
+            <div class="iden">
+                <img src="./images/icons/Database Administrator_128px.png" alt="">
+                <p>Ahmed</p>
+            </div>
+            <a href="#">Logout</a>
+        </div>
+
+        <div class="main_body">
+            <aside class="aside1">
+                <fieldset>
+                    <legend>Menu</legend>
+                    <p>Employee ID</p>
+                    <form>
+                        <input type="text" class="text">
+                        <input type="submit" value="Search" class="sub">
+                    </form>
+                    <p>Employee Options</p>
+                    <div class="buttons">
+                        <a href="./admin_add_employee.html">Add Employee</a>
+                        <a href="./admin_dashboard.html">Exit</a>
+                    </div>
+                </fieldset>
+            </aside>
+            
+            <aside class="aside2">
+                <fieldset>
+                    <legend>Employees</legend>
+                    <div class="headers">
+                        <p>Employee ID</p>
+                        <p>Employee Name</p>
+                        
+                    </div>
+                    <div class="employees">
+                        <div class="employee disabled">
+                            <p>EMP0000</p>
+                            <p>Owusu Dankwah Prince</p>
+                            <div class="imag">
+                                <!-- <a href="#">
+                                    <img src="./images/icons/edit_property_128px.png" alt="">
+                                </a> -->
+                                <button class="activate">
+                                    <img src="./images/icons/ok_96px.png" alt="">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="employee">
+                            <p>EMP0000</p>
+                            <p>Owusu Dankwah Prince</p>
+                            <div class="imag">
+                                <a href="#">
+                                    <img src="./images/icons/edit_property_128px.png" alt="">
+                                </a>
+                                <button class="delete">
+                                    <img src="./images/icons/cancel_80px.png" alt="">
+                                </button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </fieldset>
+            </aside>
+        </div>
+        <div class="form remove">
+           <div class="box">
+            <p>Are you sure you want to <span>deactivate</span></p> <span class="span">Owusu Prince Dankwah ?</span>
+            <div class="options">
+                <a href="">Yes</a>
+                <button class="no">No</button>
+            </div>
+           </div>
+        </div>
+        <div class="form1 remove">
+           <div class="box">
+            <p>Are you sure you want to <span>activate</span></p> <span class="span">Owusu Prince Dankwah ?</span>
+            <div class="options">
+                <a href="">Yes</a>
+                <button class="no1">No</button>
+            </div>
+           </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>

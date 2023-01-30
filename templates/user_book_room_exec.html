@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+        <title>HOTEL GP</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href={% static "main.css" %}>
+        <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+        <link rel = "icon" href = "images/logo.png" type = "image/png">
+</head>
+<body class="body">
+    <div class = "book">
+        <h1 class="pay">Executive room</h1>
+        <form method="post">
+            {% csrf_token %}
+                {% for message in messages %}
+                <div class="error-txt">{{ message }}</div>
+                {% endfor %}
+            <div class="book-form">
+                <div class="form-item">
+                    <select name="rooms" id="rooms">
+                        <option value="L6">L6</option>
+                        <option value="L7">L7</option>
+                        <option value="L8">L8</option>
+                        <option value="L9">L9</option>
+                        <option value="L10">L10</option>
+                    </select>
+                </div>
+                <div class = "form-item">
+                    <label for = "checkin-date">Check In Date: </label>
+                    <input type = "date" id = "chekin-date" name="arrival">
+                </div>
+                <div class = "form-item">
+                    <label for = "checkout-date">Check Out Date: </label>
+                    <input type = "date" id = "chekout-date" name="dep">
+                </div>
+                <div class = "form-item">
+                    <label for = "guest">Guests: </label>
+                    <input type = "number" min = "1" value = "1" id = "adult" name="guest">
+                </div>
+                <div class = "form-item">
+                    <label for = "rooms">Telephone Number: </label>
+                    <input type = "text" maxlength = "10" id = "rooms" name="num">
+                </div>
+                <div class = "form-item">
+                    <label for = "rooms">Price: </label>
+                    <input type = "number" maxlength = "10" id = "price" onkeypress="return false;" name="price">
+                </div>
+            </div>
+            
+            <h1 class="pay">Payment Method</h1>
+            <div class="book-form radio">
+                <div class = "form-item ones">
+                    <div class="one">
+                        <input type="radio" name="rad" id="mtn">
+                        <p>Mtn</p>
+                        <img src={% static "./images/Micro Sim Card_128px.png" %} alt="">
+                    </div>
+                    <div class="num">
+                        <input type="text" placeholder="enter your number">
+                    </div>
+                </div>
+                <div class = "form-item ones ">
+                    <div class="one">
+                        <input type = "radio" value = "Mtn" name="rad" id="voda">
+                        <p>Vodafone</p>
+                        <img src={% static "./images/SIM Card_128px.png" %} alt="">
+                    </div>
+                    <div class="num">
+                        <input type="text" placeholder="enter your number">
+                    </div>
+                </div>
+            </div>
+            <div class = "form-item">
+                <input type = "submit" class = "btn" value = "Book Now">
+            </div>
+        </form>
+    </div>
+
+    <script defer>
+
+        setInterval(function(){
+            var arrival = document.getElementById('chekin-date').value;
+            var departure = document.getElementById('chekout-date').value;
+
+            room_price =200;
+            var date1 = new Date(arrival)
+            var date2 = new Date(departure)
+
+            var diff = date2.getTime() - date1.getTime();
+
+            var stay_days = diff/(1000*3600*24);
+            
+            actual_price = stay_days * room_price;
+            
+            if (actual_price > 0){
+                document.getElementById('price').value = actual_price;
+            }
+
+        }, 2000)         
+
+    </script>
+</body>
+</html>
